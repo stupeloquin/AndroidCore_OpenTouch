@@ -2387,6 +2387,185 @@ public class GamepadDefinitions
                                             ActionInput.SourceType.BUTTON,
                                             -1);
             }
+            else if (app == AppInfo.Apps.DESCENT_TOUCH)
+            {
+                gamepadDefinition.addHeader("Flight (6DOF)");
+
+                gamepadDefinition.addAction("analog_move_fwd",
+                                            "Fwd/Back",
+                                            ActionInput.ActionType.ANALOG,
+                                            PortActDefs.ACTION_ANALOG_FWD,
+                                            ActionInput.SourceType.AXIS,
+                                            MotionEventCompat.AXIS_Y, new AnalogAxisDialog());
+
+                gamepadDefinition.addAction("analog_move_strafe",
+                                            "Slide Left/Right",
+                                            ActionInput.ActionType.ANALOG,
+                                            PortActDefs.ACTION_ANALOG_STRAFE,
+                                            ActionInput.SourceType.AXIS,
+                                            MotionEventCompat.AXIS_X, new AnalogAxisDialog());
+
+                gamepadDefinition.addAction("analog_look_yaw",
+                                            "Turn Left/Right",
+                                            ActionInput.ActionType.ANALOG,
+                                            PortActDefs.ACTION_ANALOG_YAW,
+                                            ActionInput.SourceType.AXIS,
+                                            MotionEventCompat.AXIS_Z, new AnalogAxisDialog());
+
+                gamepadDefinition.addAction("analog_look_pitch",
+                                            "Pitch Up/Down",
+                                            ActionInput.ActionType.ANALOG,
+                                            PortActDefs.ACTION_ANALOG_PITCH,
+                                            ActionInput.SourceType.AXIS,
+                                            MotionEventCompat.AXIS_RZ, new AnalogAxisDialog());
+
+                gamepadDefinition.addAction("analog_slide_vert",
+                                            "Slide Up/Down",
+                                            ActionInput.ActionType.ANALOG,
+                                            PortActDefs.ACTION_ANALOG_VERT,
+                                            ActionInput.SourceType.AXIS,
+                                            -1, new AnalogAxisDialog());
+
+                gamepadDefinition.addAction("analog_bank",
+                                            "Bank Left/Right",
+                                            ActionInput.ActionType.ANALOG,
+                                            PortActDefs.ACTION_ANALOG_ROLL,
+                                            ActionInput.SourceType.AXIS,
+                                            -1, new AnalogAxisDialog());
+
+                gamepadDefinition.addAction("slide_up",
+                                            "Slide up",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_VERT_UP,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_A);
+
+                gamepadDefinition.addAction("slide_down",
+                                            "Slide down",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_VERT_DOWN,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_B);
+
+                gamepadDefinition.addAction("bank_left",
+                                            "Bank left",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_BANK_LEFT,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_L1);
+
+                gamepadDefinition.addAction("bank_right",
+                                            "Bank right",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_BANK_RIGHT,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_R1);
+
+                gamepadDefinition.addHeader("Weapons");
+
+                gamepadDefinition.addAction("attack",
+                                            "Fire primary",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_ATTACK,
+                                            ActionInput.SourceType.AXIS,
+                                            MotionEventCompat.AXIS_GAS);
+
+                gamepadDefinition.addAction("alt_attack",
+                                            "Fire secondary",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_ALT_ATTACK,
+                                            ActionInput.SourceType.AXIS,
+                                            MotionEventCompat.AXIS_BRAKE);
+
+                gamepadDefinition.addAction("cycle_prim",
+                                            "Cycle primary",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_CYCLE_PRIM,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1);
+
+                gamepadDefinition.addAction("cycle_sec",
+                                            "Cycle secondary",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_CYCLE_SEC,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1);
+
+                gamepadDefinition.addAction("fire_flare",
+                                            "Flare",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_FIRE_FLARE,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_Y);
+
+                gamepadDefinition.addAction("fire_bomb",
+                                            "Drop bomb",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_FIRE_BOMB,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_THUMBR);
+
+                gamepadDefinition.addAction("weapon_wheel",
+                                            "Weapon wheel",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_USE_WEAPON_WHEEL,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1, new WeaponWheelDialog());
+
+                gamepadDefinition.addHeader("Ship systems");
+
+                gamepadDefinition.addAction("afterburner",
+                                            "Afterburner (D2)",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_AFTERBURNER,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_X);
+
+                gamepadDefinition.addAction("headlight",
+                                            "Headlight (D2)",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_HEADLIGHT,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1);
+
+                gamepadDefinition.addAction("energy_shield",
+                                            "Energy to shield (D2)",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_ENERGY_SHIELD,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1);
+
+                gamepadDefinition.addHeader("View / UI");
+
+                gamepadDefinition.addAction("automap",
+                                            "Automap",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_MAP,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_SELECT);
+
+                gamepadDefinition.addAction("rear_view",
+                                            "Rear view",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_REAR_VIEW,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1);
+
+                gamepadDefinition.addAction("cockpit_view",
+                                            "Cockpit view",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_COCKPIT_VIEW,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1);
+
+                gamepadDefinition.addAction("show_kbrd",
+                                            "Show keyboard",
+                                            ActionInput.ActionType.BUTTON,
+                                            PortActDefs.PORT_ACT_SHOW_KBRD,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1);
+
+            }
         }
 
         return gamepadDefinition;

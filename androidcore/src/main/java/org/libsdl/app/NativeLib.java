@@ -29,6 +29,11 @@ public class NativeLib implements ControlInterface {
 
     public static native void analogYaw(int mode, float v, float raw);
 
+    // 6DOF flight (Descent): vertical slide and roll/bank
+    public static native void analogVert(float v, float raw);
+
+    public static native void analogRoll(float v, float raw);
+
     public static native void weaponWheelSettings(int useMoveStick, int mode, int autoTimeout);
 
     public static native int audioOverride(int freq, int samples);
@@ -83,6 +88,16 @@ public class NativeLib implements ControlInterface {
     @Override
     public void analogYaw_if(int mode, float v, float raw) {
         analogYaw(mode, v, raw);
+    }
+
+    @Override
+    public void analogVert_if(float v, float raw) {
+        analogVert(v, raw);
+    }
+
+    @Override
+    public void analogRoll_if(float v, float raw) {
+        analogRoll(v, raw);
     }
 
     @Override

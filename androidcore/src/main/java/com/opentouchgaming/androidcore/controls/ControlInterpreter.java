@@ -376,6 +376,14 @@ public class ControlInterpreter
                     {
                         controlInterface.analogSide_if(rawDeadZone * invert * ai.scale, raw);
                     }
+                    else if (ai.actionCode == PortActDefs.ACTION_ANALOG_VERT)
+                    {
+                        controlInterface.analogVert_if(-rawDeadZone * invert * ai.scale, raw);
+                    }
+                    else if (ai.actionCode == PortActDefs.ACTION_ANALOG_ROLL)
+                    {
+                        controlInterface.analogRoll_if(rawDeadZone * invert * ai.scale, raw);
+                    }
                     else //Must be using analog as a button
                     {
                         float value = event.getAxisValue(ai.source);

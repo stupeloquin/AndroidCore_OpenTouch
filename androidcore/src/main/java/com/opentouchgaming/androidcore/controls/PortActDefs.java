@@ -10,6 +10,24 @@ public class PortActDefs
     public static final int ACTION_ANALOG_STRAFE = 0x8001;
     public static final int ACTION_ANALOG_PITCH = 0x8002;
     public static final int ACTION_ANALOG_YAW = 0x8003;
+    // 6DOF flight (Descent): vertical slide and roll/bank
+    public static final int ACTION_ANALOG_VERT = 0x8004;
+    public static final int ACTION_ANALOG_ROLL = 0x8005;
+
+    // Descent (codes reserved in Clibs_OpenTouch/port_act_defs.h)
+    public static final int PORT_ACT_CYCLE_PRIM = 120;
+    public static final int PORT_ACT_CYCLE_SEC = 121;
+    public static final int PORT_ACT_FIRE_FLARE = 122;
+    public static final int PORT_ACT_FIRE_BOMB = 123;
+    public static final int PORT_ACT_AFTERBURNER = 124;
+    public static final int PORT_ACT_HEADLIGHT = 125;
+    public static final int PORT_ACT_ENERGY_SHIELD = 126;
+    public static final int PORT_ACT_COCKPIT_VIEW = 127;
+    public static final int PORT_ACT_VERT_UP = 128;
+    public static final int PORT_ACT_VERT_DOWN = 129;
+    public static final int PORT_ACT_BANK_LEFT = 130;
+    public static final int PORT_ACT_BANK_RIGHT = 131;
+    public static final int PORT_ACT_REAR_VIEW = 132;
 
 
     public static final int PORT_ACT_LEFT = 1;

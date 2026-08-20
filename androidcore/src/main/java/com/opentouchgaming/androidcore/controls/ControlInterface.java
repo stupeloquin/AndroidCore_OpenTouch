@@ -21,6 +21,12 @@ public interface ControlInterface
 
     void analogYaw_if(int mode, float v, float raw);
 
+    // 6DOF flight (Descent). Default no-op: engines that are not 6DOF
+    // never bind an action to these.
+    default void analogVert_if(float v, float raw) {}
+
+    default void analogRoll_if(float v, float raw) {}
+
     int loadSettings_if(String filename);
 
     int saveSettings_if(String filename);
