@@ -2387,7 +2387,7 @@ public class GamepadDefinitions
                                             ActionInput.SourceType.BUTTON,
                                             -1);
             }
-            else if (app == AppInfo.Apps.DESCENT_TOUCH)
+            else if (app == AppInfo.Apps.PYRO_TOUCH)
             {
                 gamepadDefinition.addHeader("Flight (6DOF)");
 
