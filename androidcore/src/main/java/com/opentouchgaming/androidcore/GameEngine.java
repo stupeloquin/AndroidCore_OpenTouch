@@ -82,7 +82,7 @@ public class GameEngine
         AVP, QUAKE4,
         /* Descent: one entry per source port. Which games a port can play
          * are its sub-games, since several ports play the same game. */
-        DESCENT_REDUX, DESCENT_REBIRTH, DESCENT_RETRO, DESCENT_D2XXL
+        DESCENT_REDUX, DESCENT_REBIRTH, DESCENT_RETRO, DESCENT_D2XXL, DESCENT_D3
 
     }
 }
