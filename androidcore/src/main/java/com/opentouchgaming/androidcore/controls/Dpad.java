@@ -17,6 +17,17 @@ public class Dpad
 
     int directionPressedLast = -1; // initialized to -1
 
+    /**
+     * Whether the left analog stick (AXIS_X/AXIS_Y) also acts as a d-pad.
+     *
+     * Useful when the stick has no other job, but harmful when it is bound to
+     * an analog game action: a stick pushed to the stop reads exactly +/-1.0,
+     * which would fire a held menu key on top of the analog value. Descent
+     * pitches on the arrow keys, so full forward thrust also dived the ship.
+     * AXIS_HAT_X/Y - the real d-pad - is unaffected either way.
+     */
+    public static boolean sticksActAsDpad = true;
+
     boolean[] axisState = new boolean[4];
     boolean[] keyState = new boolean[4];
     boolean[] finalState = new boolean[4];
@@ -72,8 +83,8 @@ public class Dpad
             float xaxis = motionEvent.getAxisValue(MotionEvent.AXIS_HAT_X);
             float yaxis = motionEvent.getAxisValue(MotionEvent.AXIS_HAT_Y);
 
-            float xaxis1 = motionEvent.getAxisValue(MotionEvent.AXIS_X);
-            float yaxis1 = motionEvent.getAxisValue(MotionEvent.AXIS_Y);
+            float xaxis1 = sticksActAsDpad ? motionEvent.getAxisValue(MotionEvent.AXIS_X) : 0;
+            float yaxis1 = sticksActAsDpad ? motionEvent.getAxisValue(MotionEvent.AXIS_Y) : 0;
 
             // Check if the AXIS_HAT_X value is -1 or 1, and set the D-pad
             // LEFT and RIGHT direction accordingly.
