@@ -1,5 +1,6 @@
 package com.opentouchgaming.androidcore.controls;
 
+import static com.opentouchgaming.androidcore.DebugLog.Level.D;
 import static com.opentouchgaming.androidcore.DebugLog.Level.E;
 
 import android.content.Context;
@@ -80,6 +81,26 @@ public class ControlInterpreter
         {
             log.log(E, "Error loading gamepad file: " + e);
         }
+
+        // A stick that drives an analog game action must not also emit menu
+        // keys at full deflection, or the two fight each other in-game.
+        Dpad.sticksActAsDpad = !analogStickIsBound();
+        log.log(D, "sticks act as dpad: " + Dpad.sticksActAsDpad);
+    }
+
+    /** True if AXIS_X or AXIS_Y is bound to an analog action. */
+    private boolean analogStickIsBound()
+    {
+        for (ActionInput ai : config.actions)
+        {
+            if (ai.actionType == ActionInput.ActionType.ANALOG
+                && ai.sourceType == ActionInput.SourceType.AXIS
+                && (ai.source == MotionEvent.AXIS_X || ai.source == MotionEvent.AXIS_Y))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void setScreenSize(int w, int h)
