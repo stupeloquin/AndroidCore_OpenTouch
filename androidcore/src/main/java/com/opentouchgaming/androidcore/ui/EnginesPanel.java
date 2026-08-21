@@ -136,9 +136,9 @@ public class EnginesPanel
         float cfgButtonSize = 0.8f;
 
         // Calculate square button size
-        // Give equal size for each ui group, but never more than 1/6 of the screen width
+        // Give equal size for each ui group, but never more than 1/6 of the panel height
         // (otherwise a small number of engines results in huge buttons)
-        int buttonSize = Math.min(screenHeightPx / engineGroups.size(), screenWidthPx / 8);
+        int buttonSize = Math.min(screenHeightPx / engineGroups.size(), screenHeightPx / 6);
         int buttonCfgSize;
         int totalWidth;
 
