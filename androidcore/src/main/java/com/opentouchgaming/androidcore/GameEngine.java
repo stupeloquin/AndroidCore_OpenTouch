@@ -80,8 +80,9 @@ public class GameEngine
         RAZE_SW, RAZE_BLOOD, RAZE_REDNECK, RAZE_NAM, RAZE_POWERSLAVE, EDUKE32, WRATH, EDUKE32_IONFURY, IORTCW, EDUKE32_AWOL, ECWOLF, FTEQW, CRISPY, LZWOLF,
         EDUKE32_AMC, D64PLUS, REALRTCW, EDUKE32_NBLOOD, DSDA, OMOHAA, UZDOOM, PERFECT_DARK, TFE, OPENJK, OPENJO, OPENJK_MP, QUAKE2REPRO, UNREAL, UNREAL_TOURNAMENT,
         AVP, QUAKE4,
-        /* Descent: one entry per (engine family, game) pair */
-        DESCENT1_REDUX, DESCENT2_REDUX, DESCENT1_RETRO, DESCENT2_RETRO, DESCENT1_REBIRTH, DESCENT2_REBIRTH
+        /* Descent: one entry per source port. Which games a port can play
+         * are its sub-games, since several ports play the same game. */
+        DESCENT_REDUX, DESCENT_REBIRTH, DESCENT_RETRO, DESCENT_D2XXL
 
     }
 }
