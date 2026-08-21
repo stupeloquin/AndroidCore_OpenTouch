@@ -2438,28 +2438,28 @@ public class GamepadDefinitions
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_VERT_UP,
                                             ActionInput.SourceType.BUTTON,
-                                            KeyEvent.KEYCODE_BUTTON_A);
+                                            KeyEvent.KEYCODE_BUTTON_L1);
 
                 gamepadDefinition.addAction("slide_down",
                                             "Slide down",
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_VERT_DOWN,
-                                            ActionInput.SourceType.BUTTON,
-                                            KeyEvent.KEYCODE_BUTTON_B);
+                                            ActionInput.SourceType.AXIS,
+                                            MotionEventCompat.AXIS_BRAKE);
 
                 gamepadDefinition.addAction("bank_left",
                                             "Bank left",
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_BANK_LEFT,
                                             ActionInput.SourceType.BUTTON,
-                                            KeyEvent.KEYCODE_BUTTON_L1);
+                                            KeyEvent.KEYCODE_BUTTON_X);
 
                 gamepadDefinition.addAction("bank_right",
                                             "Bank right",
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_BANK_RIGHT,
                                             ActionInput.SourceType.BUTTON,
-                                            KeyEvent.KEYCODE_BUTTON_R1);
+                                            KeyEvent.KEYCODE_BUTTON_A);
 
                 gamepadDefinition.addHeader("Weapons");
 
@@ -2474,29 +2474,29 @@ public class GamepadDefinitions
                                             "Fire secondary",
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_ALT_ATTACK,
-                                            ActionInput.SourceType.AXIS,
-                                            MotionEventCompat.AXIS_BRAKE);
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_R1);
 
                 gamepadDefinition.addAction("cycle_prim",
                                             "Cycle primary",
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_CYCLE_PRIM,
                                             ActionInput.SourceType.BUTTON,
-                                            -1);
+                                            KeyEvent.KEYCODE_BUTTON_Y);
 
                 gamepadDefinition.addAction("cycle_sec",
                                             "Cycle secondary",
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_CYCLE_SEC,
                                             ActionInput.SourceType.BUTTON,
-                                            -1);
+                                            KeyEvent.KEYCODE_BUTTON_B);
 
                 gamepadDefinition.addAction("fire_flare",
                                             "Flare",
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_FIRE_FLARE,
                                             ActionInput.SourceType.BUTTON,
-                                            KeyEvent.KEYCODE_BUTTON_Y);
+                                            KeyEvent.KEYCODE_BUTTON_THUMBL);
 
                 gamepadDefinition.addAction("fire_bomb",
                                             "Drop bomb",
@@ -2519,7 +2519,7 @@ public class GamepadDefinitions
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_AFTERBURNER,
                                             ActionInput.SourceType.BUTTON,
-                                            KeyEvent.KEYCODE_BUTTON_X);
+                                            -1);
 
                 gamepadDefinition.addAction("headlight",
                                             "Headlight (D2)",
