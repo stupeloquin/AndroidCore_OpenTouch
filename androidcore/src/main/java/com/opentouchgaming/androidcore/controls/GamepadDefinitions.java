@@ -2565,6 +2565,36 @@ public class GamepadDefinitions
                                             ActionInput.SourceType.BUTTON,
                                             -1);
 
+                gamepadDefinition.addHeader("Common menu navigation keys");
+
+                // Descent's menus - netgame setup, mission lists, options - are
+                // all keyboard lists, so without these the d-pad moves the
+                // highlight and nothing confirms it. Select doubles up with bank
+                // right, the way the other apps double it with use: Return is
+                // inert while flying. Back goes on Start rather than doubling
+                // with a weapon key, because it sends Escape, which opens the
+                // in-game menu - and that is what Start should do anyway.
+                gamepadDefinition.addAction("menu_select",
+                                            "Menu select",
+                                            ActionInput.ActionType.MENU,
+                                            PortActDefs.PORT_ACT_MENU_SELECT,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_A);
+
+                gamepadDefinition.addAction("menu_back",
+                                            "Menu back",
+                                            ActionInput.ActionType.MENU,
+                                            PortActDefs.PORT_ACT_MENU_BACK,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_START);
+
+                gamepadDefinition.addAction("menu_show",
+                                            "Menu show (back button)",
+                                            ActionInput.ActionType.MENU,
+                                            PortActDefs.PORT_ACT_MENU_SHOW,
+                                            ActionInput.SourceType.BUTTON,
+                                            -1);
+
             }
         }
 
