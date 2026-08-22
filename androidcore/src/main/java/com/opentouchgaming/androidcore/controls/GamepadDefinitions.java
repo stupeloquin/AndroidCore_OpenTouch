@@ -2489,7 +2489,7 @@ public class GamepadDefinitions
                                             ActionInput.ActionType.BUTTON,
                                             PortActDefs.PORT_ACT_CYCLE_SEC,
                                             ActionInput.SourceType.BUTTON,
-                                            KeyEvent.KEYCODE_BUTTON_B);
+                                            KeyEvent.KEYCODE_BUTTON_R2);
 
                 gamepadDefinition.addAction("fire_flare",
                                             "Flare",
@@ -2571,9 +2571,18 @@ public class GamepadDefinitions
                 // all keyboard lists, so without these the d-pad moves the
                 // highlight and nothing confirms it. Select doubles up with bank
                 // right, the way the other apps double it with use: Return is
-                // inert while flying. Back goes on Start rather than doubling
-                // with a weapon key, because it sends Escape, which opens the
-                // in-game menu - and that is what Start should do anyway.
+                // inert while flying.
+                //
+                // Back is the east button, where anyone looks for it. That is why
+                // cycle secondary moved off it: back sends Escape, and Escape is
+                // not inert while flying - it opens the in-game menu - so the two
+                // could not share a button. Start brings the menu up, which is what
+                // it is for everywhere else, and it does that for every game here
+                // because the framework answers it.
+                //
+                // Tab is what Descent 3's dialogs move focus with, and enter then
+                // presses whatever holds it; without a tab a pad cannot reach a
+                // plain line of text at all.
                 gamepadDefinition.addAction("menu_select",
                                             "Menu select",
                                             ActionInput.ActionType.MENU,
@@ -2586,14 +2595,21 @@ public class GamepadDefinitions
                                             ActionInput.ActionType.MENU,
                                             PortActDefs.PORT_ACT_MENU_BACK,
                                             ActionInput.SourceType.BUTTON,
-                                            KeyEvent.KEYCODE_BUTTON_START);
+                                            KeyEvent.KEYCODE_BUTTON_B);
+
+                gamepadDefinition.addAction("menu_tab",
+                                            "Menu next item (Descent 3)",
+                                            ActionInput.ActionType.MENU,
+                                            PortActDefs.PORT_ACT_MENU_TAB,
+                                            ActionInput.SourceType.BUTTON,
+                                            KeyEvent.KEYCODE_BUTTON_L2);
 
                 gamepadDefinition.addAction("menu_show",
                                             "Menu show (back button)",
                                             ActionInput.ActionType.MENU,
                                             PortActDefs.PORT_ACT_MENU_SHOW,
                                             ActionInput.SourceType.BUTTON,
-                                            -1);
+                                            KeyEvent.KEYCODE_BUTTON_START);
 
             }
         }
