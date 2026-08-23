@@ -224,6 +224,7 @@ public class PortActDefs
 
     public static final int PORT_ACT_MENU_SHOW = 0x208;
     public static final int PORT_ACT_MENU_TAB = 0x209;   // move focus (Descent 3)
+    public static final int PORT_ACT_GUIDEBOT = 0x20A;   // GuideBot menu (Descent 3)
 
     public static final int PORT_ACT_VOLUME_UP = 0x242;
     public static final int PORT_ACT_VOLUME_DOWN = 0x243;
