@@ -47,6 +47,19 @@ public class AppInfo
     public static String website = null;
     public static boolean hideModWads = false;
     public static boolean groupSimilarEngines = false;
+
+    /**
+     * How many engines to stack in a column of the engine panel before starting
+     * another column. 0 lays each group out as a single row, which is how the
+     * panel has always looked.
+     */
+    public static int enginesPerColumn = 0;
+
+    /**
+     * The smallest an engine icon may get, as a fraction of the panel height:
+     * the icon is at most (panel height / this). Larger numbers, smaller icons.
+     */
+    public static int engineIconDivisor = 6;
     public static UserFilesDialog.UserFileEntryDescription[] userFilesEntries = null;
 
     public static int defaultAppImage;

@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
 
+import com.opentouchgaming.androidcore.AppInfo;
 import com.opentouchgaming.androidcore.DebugLog;
 import com.opentouchgaming.androidcore.GameEngine;
 import com.opentouchgaming.androidcore.R;
@@ -76,13 +77,25 @@ public class EnginesPanel
             group.engines.add(gameEngines[n]);
         }
 
-        // Find largest number of engines in a group
-        int largestGroup = 1;
+        // How the engines of a group are laid out. With enginesPerColumn set they
+        // run down the panel and wrap into another column, which is how QuadTouch
+        // reads; at 0 a group is the single row this panel has always drawn. The
+        // arithmetic below covers both - at 0 every group is one row deep and as
+        // many columns wide as it has engines, which is exactly the old sizing.
+        int perColumn = AppInfo.enginesPerColumn;
+
+        int totalRows = 0;
+        int widestGroup = 1;
         for (EngineGroup g : engineGroups)
         {
-            //log.log(DebugLog.Level.D, "Group has " + g.engines.size());
-            if (g.engines.size() > largestGroup)
-                largestGroup = g.engines.size();
+            int n = g.engines.size();
+
+            g.rows = (perColumn > 0) ? Math.min(n, perColumn) : 1;
+            int columns = (perColumn > 0) ? ((n + perColumn - 1) / perColumn) : n;
+
+            totalRows += g.rows;
+            if (columns > widestGroup)
+                widestGroup = columns;
         }
 
         // Button to open panel
@@ -138,7 +151,7 @@ public class EnginesPanel
         // Calculate square button size
         // Give equal size for each ui group, but never more than 1/6 of the panel height
         // (otherwise a small number of engines results in huge buttons)
-        int buttonSize = Math.min(screenHeightPx / engineGroups.size(), screenHeightPx / 6);
+        int buttonSize = Math.min(screenHeightPx / totalRows, screenHeightPx / AppInfo.engineIconDivisor);
         int buttonCfgSize;
         int totalWidth;
 
@@ -146,7 +159,7 @@ public class EnginesPanel
 
         if (useGroups)
         {
-            totalWidth = buttonSize * largestGroup + buttonCfgSize;
+            totalWidth = buttonSize * widestGroup + buttonCfgSize;
         }
         else
         {
@@ -171,7 +184,9 @@ public class EnginesPanel
             int margin = 0;
             LinearLayout groupLayout = new LinearLayout(context);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, 0);
-            params.weight = 1;
+            // Proportional, so a group of three engines is three times the height
+            // of a group of one and the side image's bands line up with the rows.
+            params.weight = group.rows;
             params.setMargins(margin, margin, margin, margin);
             groupLayout.setLayoutParams(params);
             // Buttons are now capped below the row height, so center them within the row
@@ -189,6 +204,7 @@ public class EnginesPanel
                                                                                 LinearLayout.LayoutParams.MATCH_PARENT));
 
             // Add buttons to the group
+            LinearLayout columnLayout = null;
             for (int e = 0; e < group.engines.size(); e++)
             {
                 GameEngine engine = group.engines.get(e);
@@ -215,7 +231,26 @@ public class EnginesPanel
                                           });
 
                 button.setLayoutParams(params);
-                enginesLayout.addView(button);
+
+                if (perColumn > 0)
+                {
+                    // Start another column once this one is full
+                    if ((e % perColumn) == 0)
+                    {
+                        columnLayout = new LinearLayout(context);
+                        columnLayout.setOrientation(LinearLayout.VERTICAL);
+                        columnLayout.setLayoutParams(
+                                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                                                              LinearLayout.LayoutParams.WRAP_CONTENT));
+                        enginesLayout.addView(columnLayout);
+                    }
+
+                    columnLayout.addView(button);
+                }
+                else
+                {
+                    enginesLayout.addView(button);
+                }
 
                 // CFG BUTTON  ------------------------------------------------------------------
                 AppCompatImageView buttonCfg;
@@ -342,5 +377,8 @@ public class EnginesPanel
     {
         ArrayList<GameEngine> engines = new ArrayList<>();
         ImageButton button;
+
+        /** Rows this group occupies, which is what its share of the height is. */
+        int rows = 1;
     }
 }
